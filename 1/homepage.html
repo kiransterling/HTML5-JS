@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<style type="text/css">
+div {
+display : block;
+font-weight: normal;
+background-color: AliceBlue;
+border: 1px solid black;
+margin-left: 10px;
+padding: 10px;
+}
+</style>
+
+
+<script type="text/javascript">
+function modify() {
+var link = document.createElement("a");
+link.setAttribute("href","http://www.google.com");
+var newText = document.createTextNode("Google");
+link.appendChild(newText);
+var br = document.createElement("br");
+document.getElementById("myDiv").appendChild(link);
+document.getElementById("myDiv").appendChild(br);
+}
+
+function removeElement() {
+	try {
+	var divObj = document.getElementById("myDiv");
+	var childOjb;
+	while (divObj.childNodes.length > 6) {
+	childObj = divObj.lastChild;
+	if (confirm("Are you sure you want to remove the tag " +
+	childObj + " ?")) {
+	alert("Removing the child tag...");
+	divObj.removeChild(childObj);
+	}
+	else {
+	alert("No further changes made");
+	break;
+	} // end if/else
+	} // end while
+	}
+	catch(e) {
+	alert(e.message);
+	}
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<p>
+<button onclick="removeElement()">Remove the last anchor element</button>
+</p>
+<body>
+<h3> Using JavaScript with HTML 5</h3>
+<div id="myDiv">
+<a href="http://www.weather.gov">US Weather</a><br />
+<a href="http://www.yahoo.com">Yahoo</a><br />
+</div>
+<p>Welcome to using JavaScript</p>
+<p>
+<button onclick="modify()">Add new anchor element</button>
+</p>
+</body>
+</html>
